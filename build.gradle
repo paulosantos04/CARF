@@ -1,0 +1,51 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.2'
+    id 'io.spring.dependency-management' version '1.1.5'
+}
+
+group = 'com.carf.carfapp'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+repositories {
+    // Repositórios onde o Gradle vai buscar as dependências
+    mavenCentral()
+    maven { url 'https://oss.sonatype.org/content/repositories/releases/' }
+}
+
+dependencies {
+    // === Spring Boot base ===
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-devtools'
+
+    // === Banco de dados ===
+    runtimeOnly 'org.postgresql:postgresql'
+
+    // === Lombok ===
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // === OpenCV + JavaCV ===
+    // Usando versões existentes e estáveis
+    implementation 'org.bytedeco:javacv-platform:1.5.10'
+    implementation 'org.bytedeco:opencv-platform:4.10.0-1.5.11'
+
+    // === Testes ===
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
