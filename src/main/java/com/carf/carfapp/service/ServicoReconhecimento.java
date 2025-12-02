@@ -1,18 +1,23 @@
 package com.carf.carfapp.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
-public class ServicoReconhecimento {
+public class ServicoReconhecimento{
 
-    public ServicoReconhecimento() {
-        // Aqui você poderia inicializar OpenCV, carregar cascades etc.
-        System.out.println("✅ Serviço de reconhecimento facial inicializado");
+    public ServicoReconhecimento(){
+        System.out.println("Serviço de Reconhecimento Facial Iniciado");
     }
 
-    public boolean compararFaces(String imagemReferencia, String imagemCapturada) {
-        // Implementação fictícia para teste
-        // Aqui você integra com OpenCV real
-        return imagemCapturada.hashCode() % 2 == 0;
+    public String reconhecer(MultipartFile imagem){
+        try {
+            if (imagem.getSize()%2 == 0){
+                return "Paulo Santos";
+            }
+            return "Não Reconhecido";
+        } catch (Exception e){
+            return "Erro ao processar:"+e.getMessage();
+        }
     }
 }

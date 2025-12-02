@@ -16,12 +16,18 @@ public class Aluno {
     @Column(unique = true)
     private String matricula;
 
-    @Column(unique = true)
-    private String cpf;
-
-    private String nome;
+    private String nomeAluno;
 
     // Base64 ou caminho da imagem de referência
     @Column(length = 100000)
     private String imagemReferencia;
+
+    public String getNomeAluno() {
+        return nomeAluno;
+    }
+    public void setNomeAluno(String nomeAluno) {
+        this.nomeAluno = nomeAluno;
+    }
+
+
 }
