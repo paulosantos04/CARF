@@ -18,7 +18,7 @@ public class ServicoAcesso{
     }
 
     public String registrarAcesso(String nomeAluno){
-        var aluno = alunoRepository.finByNome(nomeAluno).orElseThrow(()-> new RuntimeException("Aluno não encontrado"+nomeAluno));
+        var aluno = alunoRepository.findByNome(nomeAluno).orElseThrow(()-> new RuntimeException("Aluno não encontrado"+nomeAluno));
 
         RegistroAcesso registro = new RegistroAcesso();
         registro.setAluno(aluno);
